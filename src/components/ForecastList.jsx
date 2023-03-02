@@ -1,49 +1,55 @@
-import { ArrowBendDownLeft, ArrowDown, ArrowUp, Drop } from "phosphor-react";
-import waterIcon from "../assets/Water.png";
-export function ForecastList({ min }) {
-  let getMinNumber = parseInt(min);
+import { ArrowDown, ArrowUp, Drop } from "phosphor-react";
+
+export function ForecastList() {
+  let data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   return (
- <div className="w-full">
-      <div className=" w-[325px] md:w-full pl-5 md:px-5 flex flex-nowrap whitespace-nowrap md:whitespace-wrap xl:whitespace-nowrap lg:flex overflow-scroll lg:overflow-visible text-gray-400 justify-start md:justify-center lg:justify-start lg:mt-20 mb-10 ">
-        <button className="inline-block border py-[2px] bg-gray-400 rounded-full px-5 mr-4 text-white ">
-          Essa Semana
-        </button>
-        <button className="hover:transition-all duration-300 inline-block mr-4 px-5 border rounded-full border-gray-500 hover:bg-gray-400 hover:border-gray-400 hover:text-white">
-          Esse mês
-        </button>
-        <button className="hover:transition-all duration-300 inline-block hover:bg-gray-400 hover:border-gray-400 hover:text-white mr-4 px-5 border rounded-full border-gray-500">
-          Próximos 3 meses
-        </button>
-        <button className="hover:transition-all duration-300 inline-block hover:bg-gray-400 hover:border-gray-400 hover:text-white px-5 border rounded-full border-gray-500 ">
-          Próximos 6 meses
-        </button>
+    <div className="lg:mt-20 lg:w-full">
+      <div className="mb-5 flex flex-wrap justify-center whitespace-nowrap pt-3 text-gray-400 lg:justify-start">
+        <form className="rounded-2xl border border-gray-400 p-1" action="">
+          <select className="px-2">
+            <option value="semana">Essa Semana</option>
+            <option value="mes">Esse mês</option>
+            <option value="prox-3-meses">Próximos 3 meses</option>
+            <option value="prox-5-meses">Próximos 6 meses</option>
+          </select>
+        </form>
       </div>
 
-      <div className="flex  lg:block w-full">
-        <table className="m-5 h-[400px] lg:m-0 w-full lg:block lg:w-full">
-          <tbody className=" w-max mx-auto lg:mx-0 h-[400px] block lg:mx-auto overflow-y-auto">
-            <tr className="border-b">
-              <td className="py-2">Domingo</td>
-              <td className=" md:px-20 px-5 py-2">
-                <Drop className="relative inline-block mr-1" />
-                30%
-              </td>
-              <td className="hidden md:pr-20 lg:pr-0 md:inline py-2">icon</td>
-              <td className="lg:pl-20 py-2 pr-3">
-                <ArrowDown className="text-blue-700 relative inline-block mt-[-3px]" />
-                17&#8451;
-              </td>
-              <td className="pl-2">
-                <ArrowUp className=" mt-[-3px] relative text-red-500 inline-block" />
-                30&#8451;
-              </td>
+      <div className=" w-full lg:block ">
+        <table className=" h-[400px] w-full overflow-x-auto overflow-y-auto lg:block lg:min-w-[85%]">
+          <tbody className=" mx-auto block h-[400px] w-max overflow-y-auto">
+            <tr>
+              <th>Dia</th>
+              <th className="px-5 md:px-20">Umidade</th>
+              <th className="hidden pr-20 md:block lg:pr-0">Tempo</th>
+              <th className="lg:pl-20">Max/min</th>
             </tr>
-            
-           
+
+            {data.map((data) => {
+              if (data != 20) {
+                return (
+                  <tr className="border-b">
+                    <td className="py-2">Domingo</td>
+                    <td className=" px-10 py-2 text-center md:px-20">
+                      <Drop className="relative mr-1 inline-block" />
+                      30%
+                    </td>
+                    <td className="hidden py-2 pr-20 text-center md:block lg:pr-0">
+                      icon
+                    </td>
+                    <td className=" py-2 pr-3 lg:pl-20">
+                      <ArrowDown className="relative mt-[-3px] inline-block text-blue-700" />
+                      17&#8451;
+                      <ArrowUp className=" relative mt-[-3px] ml-2 inline-block text-red-500 lg:ml-5" />
+                      30&#8451;
+                    </td>
+                  </tr>
+                );
+              }
+            })}
           </tbody>
         </table>
       </div>
-      </div>
-    
+    </div>
   );
 }

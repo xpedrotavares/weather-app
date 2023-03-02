@@ -1,26 +1,18 @@
-import { LeftBoard } from "./components/LeftBoard"
-import { RightBoard } from "./components/RightBoard"
-import './global.css'
+import { FirstBoard } from "./components/FirstBoard";
+import { SecondBoard } from "./components/SecondBoard";
+import "./global.css";
 
 function App() {
-
   return (
-    // <div className="lg:h-screen">
-      <div className="w-full md:h-screen flex justify-center items-center" >
-        <div className=" gap-0 p-10 lg:grid flex flex-col items-center lg:grid-cols-4 lg:h-full lg:items-center ">
-
-        <div className="md:col-span-3 w-full md:h-[744px] ">
-          <LeftBoard />
-        </div>
-        <div className="md:col-span-1  md:h-[744px] ">
-          <RightBoard />
-        </div>
-        </div>
-      {/* 
-       */}
+    <div className="bg-glass flex h-full w-full flex-wrap lg:h-screen lg:flex-nowrap lg:justify-center lg:px-40">
+      <div className="m-2 flex w-full items-center lg:my-0 lg:mr-0 lg:h-full lg:w-[75%] 2xl:w-[55%]">
+        <FirstBoard />
       </div>
-    // </div>
-  )
+      <div className="m-2 mt-0 w-full lg:my-0 lg:ml-0 lg:flex lg:h-full lg:w-[25%] lg:items-center">
+        <SecondBoard />
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

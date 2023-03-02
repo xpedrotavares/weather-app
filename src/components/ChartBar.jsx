@@ -6,9 +6,9 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
+} from "chart.js";
 
-import { Bar } from 'react-chartjs-2';
+import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -22,45 +22,41 @@ ChartJS.register(
 export function ChartBar() {
   const options = {
     responsive: true,
-  
-      scales: {
-          y: {
-              ticks: {
-                  // Include a dollar sign in the ticks
-                  callback: function(data, index, ticks) {
-                      return data + '%';
-                  }
-              }
-          }
+
+    scales: {
+      y: {
+        ticks: {
+          // Include a dollar sign in the ticks
+          callback: function (data) {
+            return data + "%";
+          },
+        },
       },
- 
+    },
+
     plugins: {
       legend: {
-        position: 'top',
+        position: "top",
       },
       title: {
         display: false,
-        text: 'Chances de chuvas nos próximos dias',
-       
+        text: "Chances de chuvas nos próximos dias",
       },
     },
   };
 
-  const labels = ['11:00', '12:00', '13:00', '14:00', '15:00'];
+  const labels = ["11:00", "12:00", "13:00", "14:00", "15:00"];
   const data = {
     labels,
     datasets: [
       {
-        label: 'Chances de chuva em %',
-        data: [16,14,18, 31, 14],
-        borderColor: '#2E2E6',
-        backgroundColor: 'rgb(46, 46, 101, 100%)',
+        label: "Chances de chuva em %",
+        data: [16, 14, 18, 31, 14],
+        borderColor: "#2E2E6",
+        backgroundColor: "rgb(46, 46, 101, 100%)",
       },
-    ]
-  }
-  let screenSize = window.innerWidth
-  
+    ],
+  };
 
-  return <Bar height={screenSize > 1290 ? 300: ''} options={options} data={data} />;
-  
+  return <Bar options={options} data={data} />;
 }
