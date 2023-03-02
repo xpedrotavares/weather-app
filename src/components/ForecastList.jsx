@@ -25,10 +25,10 @@ export function ForecastList() {
               <th className="lg:pl-20">Max/min</th>
             </tr>
 
-            {data.map((data) => {
+            {data.map((data, idx) => {
               if (data != 20) {
                 return (
-                  <tr className="border-b">
+                  <tr key={idx} className="border-b">
                     <td className="py-2">Domingo</td>
                     <td className=" px-10 py-2 text-center md:px-20">
                       <Drop className="relative mr-1 inline-block" />
